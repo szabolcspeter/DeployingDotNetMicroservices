@@ -1,0 +1,30 @@
+az --version
+az login
+az group create --name myResourceGroup --location westeurope
+az acr create --resource-group myResourceGroup --name szakashoppingacr --sku Basic
+az acr update -n szakashoppingacr --admin-enabled true
+az acr login --name szakashoppingacr
+az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table
+docker tag shoppingapi:latest szakashoppingacr.azurecr.io/shoppingapi:v1
+docker tag shoppingclient:latest szakashoppingacr.azurecr.io/shoppingclient:v1
+docker push szakashoppingacr.azurecr.io/shoppingapi:v1
+docker push szakashoppingacr.azurecr.io/shoppingclient:v1
+az acr repository list --name szakashoppingacr --output table
+az acr repository show-tags --name szakashoppingacr --repository shoppingclient --output table
+az aks create --resource-group myResourceGroup --name myAKSCluster --node-count 1 --generate-ssh-keys --attach-acr szakashoppingacr
+az aks install-cli
+az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
+kubectl config get-contexts
+kubectl get nodes
+az acr repository list --name szakashoppingacr --output table
+kubectl create secret docker-registry acr-secret --docker-server=szakashoppingacr.azurecr.io --docker-username=szakashoppingacr --docker-password=<password>  --docker-email=<subscription email>
+kubectl get secret
+Create YAML files for deploying on AKS under folder ./aks
+kubectl apply -f ./aks/
+kubectl get all
+kubectl get svc
+Open a browser and hit the External-IP address
+kubectl scale --replicas=3 deployment.apps/shoppingclient-deployment
+// Zero deployment on AKS
+Edit YAML files
+kubectl apply -f ./aks/
