@@ -28,3 +28,10 @@ kubectl scale --replicas=3 deployment.apps/shoppingclient-deployment
 // Zero deployment on AKS
 Edit YAML files
 kubectl apply -f ./aks/
+
+// Clean ALL AKS and Azure Resources
+// Step 1
+kubectl delete -f ./aks/
+// Step 2
+az login
+az group delete --name myResourceGroup --yes --no-wait
