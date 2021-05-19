@@ -16,7 +16,7 @@ Finally, files from folder "aks" can be used to deploy the application on Azure 
 You have 3 different ways to run the application: 
 
 ## 1) using docker compose (when you have no Kubernetes installed)
-   *Prerequisits:\
+   *Prerequisites:\
       &nbsp;&nbsp;&nbsp;- install and setup any kind of docker system (eg. docker-desktop for windows)*\
    \
    start:\
@@ -24,7 +24,7 @@ You have 3 different ways to run the application:
    stop:\
       &nbsp;&nbsp;&nbsp;- **docker-compose -f docker-compose.yml down**
 ## 2) If you have local Kubernetes setup, apply the yaml files in dir 'k8s'
-   *Prerequisits:\
+   *Prerequisites:\
       &nbsp;&nbsp;&nbsp;- docker images must be created from Web API and MVC projects. See dockerfiles from step 1\
       &nbsp;&nbsp;&nbsp;- install and setup Kubernetes (eg. Minikube on Linux or enable Kubernetes on docker-desktop)*\
    \
@@ -34,7 +34,7 @@ You have 3 different ways to run the application:
       &nbsp;&nbsp;&nbsp;- **kubectl delete -f <"k8s" folder>** 
  
 ## 3) You can also run the complete solution on Azure Cloud using Azure Kubernetes Service and Azure Container Registry.
-   *Prerequisits:\
+   *Prerequisites:\
       &nbsp;&nbsp;&nbsp;- This step requires you to create a Free Trial account on Azure.\
       &nbsp;&nbsp;&nbsp;- In order to setup, docker images must be created from Web API and MVC projects.See dockerfiles from step 1\
       &nbsp;&nbsp;&nbsp;- On Azure portal you need to setup Kubernetes AKS and ACS.\
