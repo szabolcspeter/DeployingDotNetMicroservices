@@ -11,7 +11,7 @@ The aim of this repo is to show how to build and containerize .NET microservices
 
 Both projects (API, Client) are built and containerized from scratch using Docker and can be composed with Docker Compose.
 In addition to this, you can apply example yaml files placed in folder "k8s" to deploy them on your local Kubernetes cluster.
-Finally, files from folder "aks" can be used to deploy the application in Azure AKS using Azure ACS.
+Finally, files from folder "aks" can be used to deploy the application on Azure using AKS and ACS.
 
 You have 3 different ways to run the application: 
 
@@ -39,6 +39,7 @@ You have 3 different ways to run the application:
       &nbsp;&nbsp;&nbsp;- In order to setup, docker images must be created from Web API and MVC projects.See dockerfiles from step 1\
       &nbsp;&nbsp;&nbsp;- On Azure portal you need to setup Kubernetes AKS and ACS.\
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;You can use Azure CLI as well. You can use commands.txt in "aks" folder.*\
+    \
     start:\
       &nbsp;&nbsp;&nbsp;- **kubectl apply -f <"aks" folder>**\
     stop:\
